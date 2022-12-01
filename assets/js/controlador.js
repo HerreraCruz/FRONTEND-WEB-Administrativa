@@ -260,6 +260,45 @@ var usuariosMotoristas = [
     }
 ];
 
+var usuariosAdmin = [
+    {
+        id: 1,
+        nombre: "nappa",
+        imagenPerfil: "assets/img/profile-pics/nappa.jpg",
+        correo: 'trunks@unah.hn',
+        contraseña:'alemania',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    },
+    {
+        id: 2,
+        nombre: "oolong",
+        imagenPerfil: "assets/img/profile-pics/oolong.jpg",
+        correo: 'baby@unah.hn',
+        contraseña:'españa',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    },
+    {
+        id: 3,
+        nombre: "roshi",
+        imagenPerfil: "assets/img/profile-pics/roshi.jpg",
+        correo: 'krilin@unah.hn',
+        contraseña:'suiza',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    },
+    {
+        id: 4,
+        nombre: "zarbon",
+        imagenPerfil: "assets/img/profile-pics/zarbon.jpg",
+        correo: 'androide19@unah.hn',
+        contraseña:'suecia',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    }
+];
+
 var categorias = [
     {
         id: 1,
@@ -1142,6 +1181,7 @@ if(localStorage.getItem('usuarios')== null) {
 }
 if(localStorage.getItem('usuariosMotoristas')== null) {
     localStorage.setItem('usuariosMotoristas', JSON.stringify(usuariosMotoristas));
+    localStorage.setItem('usuariosAdmin', JSON.stringify(usuariosAdmin));
 }
 
 if(localStorage.getItem('categorias')== null) {
@@ -1156,17 +1196,14 @@ function login() {
         document.getElementsByClassName('origen0')[0].id='titulo';
         document.getElementsByClassName('origen1')[0].id='facetas';
     };
-    document.getElementById('titulo').innerHTML= `<div>aunClick</div><div>DeliveryMen</div>`
+    document.getElementById('titulo').innerHTML= `<div>aunClick</div><div>Administrador</div>`
     document.getElementById('facetas').innerHTML =
-        `<div><img src="assets/img/1.png" alt="" id="imagen"></div>
+        `<div><img src="assets/img/1.jpg" alt="" id="imagen"></div>
         <div id="login-signup">
             <button id="login" onclick="generarUsuarios()">
                 LOGIN
             </button>
             <hr>
-            <div style="color: #4C33E7; font-size: 2.0rem;" onclick="registrarse()">
-                REGISTRARSE
-            </div>
         </div>`;
 }
 
@@ -1176,12 +1213,12 @@ function generarUsuarios() {
         document.getElementsByClassName('origen0')[0].id='titulo2'
         document.getElementById('titulo2').innerHTML = 
             `<div><i class="fa-solid fa-angle-left" onclick="login()"></i></div>
-            <div>aunClick-UsuariosMotor</div>
+            <div style="text-align:center;">aunClick-UsuariosAdmin</div>
             <div><i class="fa-solid fa-bars" onclick="menu()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
-        JSON.parse(localStorage.getItem('usuariosMotoristas')).forEach(function(personaje) {
+        JSON.parse(localStorage.getItem('usuariosAdmin')).forEach(function(personaje) {
             document.getElementById('personas').innerHTML +=
-                `<button class="btn" style="border-radius: 15%;" onclick="generarPedidos(${personaje.id}); console.log('id', ${personaje.id});">
-                    <img src="${personaje.imagenPerfil}" id="otraFoto" style="border-radius: 15%;">
+                `<button class="btn" style="border-radius: 15%;" onclick="dashBoard(${personaje.id}); console.log('id', ${personaje.id});">
+                    <img src="${personaje.imagenPerfil}" id="otraFoto" style="width:70px; border-radius: 15%;">
                     <div id="rubro">
                         ${personaje.nombre}    
                     </div>
@@ -1189,39 +1226,38 @@ function generarUsuarios() {
            });  
 }
 
-function generarPedidos(a) {
+
+
+function dashBoard(a) {
     let cont=0;
     let x=0;
         document.getElementsByClassName('origen1')[0].id='categoria'
         document.getElementById('categoria').innerHTML=null;
-        document.getElementsByClassName('origen0')[0].id='titulo2'
         document.getElementById('titulo2').innerHTML = 
             `<div><i class="fa-solid fa-angle-left" onclick="generarUsuarios(${a})"></i></div>
-            <div>aunClick-OrdenDisp</div>
+            <div>aunClick-Dashboard</div>
             <div><i class="fa-solid fa-bars" onclick="menu(${a})" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
-        JSON.parse(localStorage.getItem('usuarios')).forEach(function(personaje) {
-            cont++;
-            console.log('tamaño', personaje.pedidos.length);
-            if (personaje.pedidos.length>0) {
-                x++;
-                document.getElementById('categoria').innerHTML +=
-                `<div id="carrito">
-                <button id="carrito" class="btn" style="border-radius: 20px; background-color:#9de40f;" onclick="generarPp(${a},${personaje.id-1}); console.log('id', ${personaje.id});">
-                    <div style="font-size:2rem;">Orden ${x}</div>
+        document.getElementById('categoria').innerHTML=
+        `<div>
+            <div>BIENVENIDO</div>
+            <div id="dash1">
+                <div>
+                    <div>PEDIDOS</div>
+                    <div>CATÁLOGO DE CLIENTES</div>
+                    <div>CATÁLOGO DE ASOCIADOS</div>
+                    <div>CATÁLOGO DE NEGOCIOS</div>
+                </div>
+                <div id="dash">
                     <div>
-                    <div style="width:170px;">
-                       Cliente: ${personaje.nombre}    
+                        <div>CLIENTES</div>
+                        <div>NEGOCIOS ASOCIADOS</div>
                     </div>
-                    <div>Ubicaciones: ${valoresLugares(personaje.id-1)}</div>
-                    <div>Tiendas: ${valoresNegocios(personaje.id-1)}</div>
-                    <div>Productos: ${valoresUnidades(personaje.id-1)}</div>
+                    <div>
+                        <div>PEDIDOS PENDIENTES</div>
+                        <div>PEDIDOS FINALIZADOS</div>
                     </div>
-                </button>
-                </div><br>`;
-                
-            }
-            
-           });  
+                </div>
+        </div>`
 }
 
 function menu(a) {
