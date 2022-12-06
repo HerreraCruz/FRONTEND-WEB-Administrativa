@@ -1196,9 +1196,10 @@ function login() {
         document.getElementsByClassName('origen0')[0].id='titulo';
         document.getElementsByClassName('origen1')[0].id='facetas';
     };
-    document.getElementById('titulo').innerHTML= `<div>aunClick</div><div>Administrador</div>`
+    document.getElementById('titulo').innerHTML= `<br><br><br><div style="font-size:2rem">aunClick</div><div style="font-size:2rem">Administrador</div><br>`
     document.getElementById('facetas').innerHTML =
         `<div><img src="assets/img/1.jpg" alt="" id="imagen"></div>
+        <br><br>
         <div id="login-signup">
             <button id="login" onclick="generarUsuarios()">
                 LOGIN
@@ -1239,22 +1240,22 @@ function dashBoard(a) {
             <div><i class="fa-solid fa-bars" onclick="menu(${a})" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
         document.getElementById('categoria').innerHTML=
         `<div>
-            <div>BIENVENIDO</div>
+            <div style="margin-bottom:50px; margin-left:15px; color: #4C33E7; font-size:2rem;">BIENVENIDO</div>
             <div id="dash1">
-                <div>
-                    <div>PEDIDOS</div>
-                    <div>CATÁLOGO DE CLIENTES</div>
-                    <div>CATÁLOGO DE ASOCIADOS</div>
-                    <div>CATÁLOGO DE NEGOCIOS</div>
+                <div style="background-color: #19DC15; padding:50px; border-radius: 2rem;">
+                    <div style="padding:15px; margin:20px;">PEDIDOS</div>
+                    <div style="padding:15px; margin:20px;">CATÁLOGO DE CLIENTES</div>
+                    <div style="padding:15px; margin:20px;">CATÁLOGO DE ASOCIADOS</div>
+                    <div style="padding:15px; margin:20px;">CATÁLOGO DE NEGOCIOS</div>
                 </div>
                 <div id="dash">
-                    <div>
-                        <div>CLIENTES</div>
-                        <div>NEGOCIOS ASOCIADOS</div>
+                    <div style="margin-left:50px">
+                        <div id="menuAdmin" style="margin-bottom:50px">CLIENTES</div>
+                        <div id="menuAdmin">NEGOCIOS ASOCIADOS</div>
                     </div>
-                    <div>
-                        <div>PEDIDOS PENDIENTES</div>
-                        <div>PEDIDOS FINALIZADOS</div>
+                    <div style="margin-left:50px">
+                        <div id="menuAdmin" style="margin-bottom:50px">PEDIDOS PENDIENTES</div>
+                        <div id="menuAdmin">PEDIDOS FINALIZADOS</div>
                     </div>
                 </div>
         </div>`
