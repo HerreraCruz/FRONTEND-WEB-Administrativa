@@ -1461,7 +1461,7 @@ function generarUsuarios(a) {
         JSON.parse(localStorage.getItem('usuarios')).forEach(function(personaje) {
             console.log("i", personaje.id);
             document.getElementById('personas').innerHTML +=
-                `<button class="btn" style="border-radius: 15%;" onclick="generarCategorias(${personaje.id}); console.log('id', ${personaje.id});">
+                `<button class="btn" style="border-radius: 15%;" console.log('id', ${personaje.id});">
                     <img src="${personaje.imagenPerfil}" id="otraFoto" style="border-radius: 15%;">
                     <div id="rubro">
                         ${personaje.nombre}    
@@ -1469,7 +1469,7 @@ function generarUsuarios(a) {
                 </button>`;
            });  
         document.getElementById('personas').innerHTML +=
-            `<button class="btn" style="border-radius: 15%;" onclick="generarCategorias()">
+            `<button class="btn" style="border-radius: 15%;" onclick="registrarse()">
                 <img src="assets/img/adicion.jpg" id="otraFoto" style="border-radius: 15%; width:130px;">
                 <div id="rubro">
                 ADICIONAR  
@@ -1495,7 +1495,7 @@ function generarUsuariosMotoristas(a) {
             </button>`;
        });  
     document.getElementById('personas').innerHTML +=
-        `<button class="btn" style="border-radius: 15%;" onclick="generarPedidos()">
+        `<button class="btn" style="border-radius: 15%;" onclick="registrarse()">
             <img src="assets/img/adicion.jpg" id="otraFoto" style="border-radius: 15%; width:130px;">
             <div id="rubro">
             ADICIONAR  
@@ -1696,7 +1696,7 @@ function registrarse() {
             `<div><i class="fa-solid fa-angle-left" onclick="login()"></i></div>
             <div>aunClick-REGISTRO</div>
             <div><i class="fa-solid fa-bars" onclick="menu()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
-    document.getElementById('facetas').innerHTML =
+    document.getElementById('personas').innerHTML =
         `<div class="container">
             <div id="registro">
                     <input class="form-control" type="text" id="name" placeholder="Nombre de Usuario">
