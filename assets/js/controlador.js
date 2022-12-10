@@ -260,6 +260,176 @@ var usuariosMotoristas = [
     }
 ];
 
+var usuariosAdmin = [
+    {
+        id: 1,
+        nombre: "nappa",
+        imagenPerfil: "assets/img/profile-pics/nappa.jpg",
+        correo: 'trunks@unah.hn',
+        contraseña:'alemania',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    },
+    {
+        id: 2,
+        nombre: "oolong",
+        imagenPerfil: "assets/img/profile-pics/oolong.jpg",
+        correo: 'baby@unah.hn',
+        contraseña:'españa',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    },
+    {
+        id: 3,
+        nombre: "roshi",
+        imagenPerfil: "assets/img/profile-pics/roshi.jpg",
+        correo: 'krilin@unah.hn',
+        contraseña:'suiza',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    },
+    {
+        id: 4,
+        nombre: "zarbon",
+        imagenPerfil: "assets/img/profile-pics/zarbon.jpg",
+        correo: 'androide19@unah.hn',
+        contraseña:'suecia',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+    }
+];
+
+var usuariosMotoristas = [
+    {
+        id: 1,
+        nombre: "trunks",
+        imagenPerfil: "assets/img/profile-pics/trunks.jpg",
+        correo: 'trunks@unah.hn',
+        contraseña:'alemania',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+        pedidos: [
+            {
+                status: 0,
+                category: 1,
+                socios: 4,
+                productos: 1,
+                unidades: 1,
+            },
+            {
+                status: 0,
+                category: 2,
+                socios: 5,
+                productos: 0,
+                unidades: 2,
+            },
+            {
+                status: 0,
+                category: 3,
+                socios: 5,
+                productos: 0,
+                unidades: 4,
+            }
+        ]
+    },
+    {
+        id: 2,
+        nombre: "baby",
+        imagenPerfil: "assets/img/profile-pics/baby.jpg",
+        correo: 'baby@unah.hn',
+        contraseña:'españa',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+        pedidos: [
+            {
+                status: 0,
+                category: 1,
+                socios: 4,
+                productos: 1,
+                unidades: false,
+            },
+            {
+                status: 0,
+                category: 2,
+                socios: 5,
+                productos: 0,
+                unidades: true,
+            },
+            {
+                status: 0,
+                category: 3,
+                socios: 5,
+                productos: 0,
+                unidades: true,
+            }
+        ]
+    },
+    {
+        id: 3,
+        nombre: "krilin",
+        imagenPerfil: "assets/img/profile-pics/krilin.jpg",
+        correo: 'krilin@unah.hn',
+        contraseña:'suiza',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+        pedidos: [
+            {
+                status: 0,
+                category: 1,
+                socios: 4,
+                productos: 1,
+                unidades: false,
+            },
+            {
+                status: 0,
+                category: 2,
+                socios: 5,
+                productos: 0,
+                unidades: true,
+            },
+            {
+                status: 0,
+                category: 3,
+                socios: 5,
+                productos: 0,
+                unidades: true,
+            }
+        ]
+    },
+    {
+        id: 4,
+        nombre: "androide 19",
+        imagenPerfil: "assets/img/profile-pics/androide_19.jpg",
+        correo: 'androide19@unah.hn',
+        contraseña:'suecia',
+        direccion: 'boulevard suyapa',
+        numero: 99887766,
+        pedidos: [
+            {
+                status: 0,
+                category: 1,
+                socios: 4,
+                productos: 1,
+                unidades: false,
+            },
+            {
+                status: 0,
+                category: 2,
+                socios: 5,
+                productos: 0,
+                unidades: true,
+            },
+            {
+                status: 0,
+                category: 3,
+                socios: 5,
+                productos: 0,
+                unidades: true,
+            }
+        ]
+    }
+];
+
 var categorias = [
     {
         id: 1,
@@ -1142,6 +1312,7 @@ if(localStorage.getItem('usuarios')== null) {
 }
 if(localStorage.getItem('usuariosMotoristas')== null) {
     localStorage.setItem('usuariosMotoristas', JSON.stringify(usuariosMotoristas));
+    localStorage.setItem('usuariosAdmin', JSON.stringify(usuariosAdmin));
 }
 
 if(localStorage.getItem('categorias')== null) {
@@ -1156,32 +1327,30 @@ function login() {
         document.getElementsByClassName('origen0')[0].id='titulo';
         document.getElementsByClassName('origen1')[0].id='facetas';
     };
-    document.getElementById('titulo').innerHTML= `<div>aunClick</div><div>DeliveryMen</div>`
+    document.getElementById('titulo').innerHTML= `<br><br><br><div style="font-size:2rem">aunClick</div><div style="font-size:2rem">Administrador</div><br>`
     document.getElementById('facetas').innerHTML =
-        `<div><img src="assets/img/1.png" alt="" id="imagen"></div>
+        `<div><img src="assets/img/1.jpg" alt="" id="imagen"></div>
+        <br><br>
         <div id="login-signup">
-            <button id="login" onclick="generarUsuarios()">
+            <button id="login" onclick="generarUsuariosAdmin()">
                 LOGIN
             </button>
             <hr>
-            <div style="color: #4C33E7; font-size: 2.0rem;" onclick="registrarse()">
-                REGISTRARSE
-            </div>
         </div>`;
 }
 
-function generarUsuarios() {
+function generarUsuariosAdmin() {
         document.getElementsByClassName('origen1')[0].id='personas'
         document.getElementById('personas').innerHTML=null;
         document.getElementsByClassName('origen0')[0].id='titulo2'
         document.getElementById('titulo2').innerHTML = 
             `<div><i class="fa-solid fa-angle-left" onclick="login()"></i></div>
-            <div>aunClick-UsuariosMotor</div>
+            <div style="text-align:center;">aunClick-UsuariosAdmin</div>
             <div><i class="fa-solid fa-bars" onclick="menu()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
-        JSON.parse(localStorage.getItem('usuariosMotoristas')).forEach(function(personaje) {
+        JSON.parse(localStorage.getItem('usuariosAdmin')).forEach(function(personaje) {
             document.getElementById('personas').innerHTML +=
-                `<button class="btn" style="border-radius: 15%;" onclick="generarPedidos(${personaje.id}); console.log('id', ${personaje.id});">
-                    <img src="${personaje.imagenPerfil}" id="otraFoto" style="border-radius: 15%;">
+                `<button class="btn" style="border-radius: 15%;" onclick="dashBoard(${personaje.id}); console.log('id', ${personaje.id});">
+                    <img src="${personaje.imagenPerfil}" id="otraFoto" style="width:70px; border-radius: 15%;">
                     <div id="rubro">
                         ${personaje.nombre}    
                     </div>
@@ -1189,39 +1358,39 @@ function generarUsuarios() {
            });  
 }
 
-function generarPedidos(a) {
+
+
+function dashBoard(a) {
     let cont=0;
     let x=0;
         document.getElementsByClassName('origen1')[0].id='categoria'
         document.getElementById('categoria').innerHTML=null;
-        document.getElementsByClassName('origen0')[0].id='titulo2'
         document.getElementById('titulo2').innerHTML = 
-            `<div><i class="fa-solid fa-angle-left" onclick="generarUsuarios(${a})"></i></div>
-            <div>aunClick-OrdenDisp</div>
+            `<div><i class="fa-solid fa-angle-left" onclick="generarUsuariosAdmin(${a})"></i></div>
+            <div>aunClick-Dashboard</div>
             <div><i class="fa-solid fa-bars" onclick="menu(${a})" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
-        JSON.parse(localStorage.getItem('usuarios')).forEach(function(personaje) {
-            cont++;
-            console.log('tamaño', personaje.pedidos.length);
-            if (personaje.pedidos.length>0) {
-                x++;
-                document.getElementById('categoria').innerHTML +=
-                `<div id="carrito">
-                <button id="carrito" class="btn" style="border-radius: 20px; background-color:#9de40f;" onclick="generarPp(${a},${personaje.id-1}); console.log('id', ${personaje.id});">
-                    <div style="font-size:2rem;">Orden ${x}</div>
-                    <div>
-                    <div style="width:170px;">
-                       Cliente: ${personaje.nombre}    
+        document.getElementById('categoria').innerHTML=
+        `<div style="width: auto;
+        height: auto;">
+            <div style="margin-bottom:50px; margin-left:15px; color: #4C33E7; font-size:2rem;">BIENVENIDO</div>
+            <div id="dash1">
+                <div id="cm" style="background-color: #19DC15; padding:50px; border-radius: 2rem;">
+                    <div class="btn" style="padding:15px; margin:20px; color: #4C33E7; font-size:1.5rem;" onclick="pedidosAdmin(${a})">PEDIDOS</div>
+                    <div class="btn" style="padding:15px; margin:20px; color: #4C33E7; font-size:1.5rem;" onclick="generarUsuarios(${a})">CATÁLOGO DE CLIENTES</div>
+                    <div class="btn" style="padding:15px; margin:20px; color: #4C33E7; font-size:1.5rem;" onclick="generarUsuariosMotoristas(${a})">CATÁLOGO DE ASOCIADOS</div>
+                    <div class="btn" style="padding:15px; margin:20px; color: #4C33E7; font-size:1.5rem;" onclick="generarCategorias(${a})">CATÁLOGO DE NEGOCIOS</div>
+                </div>
+                <div id="dash">
+                    <div style="margin-left:50px">
+                        <div id="menuAdmin" style="margin-bottom:50px">CLIENTES</div>
+                        <div id="menuAdmin">NEGOCIOS ASOCIADOS</div>
                     </div>
-                    <div>Ubicaciones: ${valoresLugares(personaje.id-1)}</div>
-                    <div>Tiendas: ${valoresNegocios(personaje.id-1)}</div>
-                    <div>Productos: ${valoresUnidades(personaje.id-1)}</div>
+                    <div style="margin-left:50px">
+                        <div id="menuAdmin" style="margin-bottom:50px">PEDIDOS PENDIENTES</div>
+                        <div id="menuAdmin">PEDIDOS FINALIZADOS</div>
                     </div>
-                </button>
-                </div><br>`;
-                
-            }
-            
-           });  
+                </div>
+        </div>`
 }
 
 function menu(a) {
@@ -1236,41 +1405,150 @@ function menu(a) {
     <div onclick="login()" data-bs-dismiss="modal"><i class="fa-solid fa-right-from-bracket"></i> SALIR</div>`;
 }
     
-function generarPp(a,e) {
+function pedidosAdmin(a,e) {
     document.getElementsByClassName('origen1')[0].id='categoria'
     document.getElementById('categoria').innerHTML=null;
     document.getElementById('titulo2').innerHTML = 
-        `<div><i class="fa-solid fa-angle-left" onclick="generarPedidos(${a})"></i></div>
+        `<div><i class="fa-solid fa-angle-left" onclick="dashBoard(${a})"></i></div>
          <div>aunClick-Orden</div>
          <div><i class="fa-solid fa-bars" onclick="menu(${a})" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`;
-    for (let i = 0; i < usuario[e].pedidos.length; i++) {
-        if (usuario[e].pedidos[i].status==1) {
-            document.getElementById('categoria').innerHTML += 
-            `<div id="carrito">
-                    <button class="btn" id="carrito" style="background-color: #9de40f;" onclick="tomarOrden(${a},${e},${i})">
-                        <img src="${producto[usuario[e].pedidos[i].category-1].socios[usuario[e].pedidos[i].socios-1].productos[usuario[e].pedidos[i].productos-1].imagen}" style="width:100px">
-                    
-                    <div style="width: 170px;">
-                        <div>${producto[usuario[e].pedidos[i].category-1].socios[usuario[e].pedidos[i].socios-1].socio}</div>
-                        <div>${producto[usuario[e].pedidos[i].category-1].socios[usuario[e].pedidos[i].socios-1].direccion}</div>
-                        <div>${producto[usuario[e].pedidos[i].category-1].socios[usuario[e].pedidos[i].socios-1].productos[usuario[e].pedidos[i].productos-1].nombre}</div>
-                        <div>${usuario[e].pedidos[i].unidades} unidad(es)</div>
-                    </div>
-                    </button>
-            </div>
-            <br>`
-            
+         for (let j = 0; j < usuario.length; j++) {
+            document.getElementById('categoria').innerHTML +=
+            `<div>
+                    Cliente: ${usuario[j].nombre}
+                </div><br>`;
+            for (let i = 0; i < usuario[j].pedidos.length; i++) {
+                document.getElementById('categoria').innerHTML +=
+                `<div>
+                    Pedido ${i+1}: ${producto[usuario[j].pedidos[i].category-1].socios[usuario[j].pedidos[i].socios-1].socio} ${producto[usuario[j].pedidos[i].category-1].socios[usuario[j].pedidos[i].socios-1].productos[usuario[j].pedidos[i].productos-1].nombre} ${usuario[j].pedidos[i].unidades} unidad(es)
+                </div><br>`
+            }
         }
-            
-    }
+
+        /* for (let j = 0; j < usuario.length; j++) {
+            for (let i = 0; i < usuario[j].pedidos.length; i++) {
+                document.getElementById('categoria').innerHTML += 
+                `<div class="container">
+                    <div id="registro">
+                        <input class="form-control" type="text" id="name" placeholder="Nombre de Usuario">
+                        <input class="form-control" type="number" id="image" placeholder="Imagen perfil" min="1" max="2">
+                        <input class="form-control" type="text" id="email" placeholder="Correo Electrónico">
+                        <input class="form-control" type="password" id="password" placeholder="Contraseña">
+                        <input class="form-control" type="text" id="address" placeholder="Dirección">
+                        <input class="form-control" type="number" id="cell" placeholder="Número Celular">
+                     </div>
+                 </div>` 
+            }
+         }*/
     document.getElementById('categoria').innerHTML +=
-    ` <div id="login-signup">
+    `<div id="login-signup">
         <button id="login" onclick="ordenActiva(${a},${e}); eliminarProducto(${a},${e}); ordenTomada(${a},${e});" data-bs-toggle="modal" data-bs-target="#agregado">
             TOMAR
         </button>
         <hr>
     </div>`;
-    
+}
+
+function generarUsuarios(a) {
+    x=0;
+        document.getElementsByClassName('origen1')[0].id='personas'
+        document.getElementById('personas').innerHTML=null;
+        document.getElementsByClassName('origen0')[0].id='titulo2'
+        document.getElementById('titulo2').innerHTML = 
+            `<div><i class="fa-solid fa-angle-left" onclick="dashBoard(${a})"></i></div>
+            <div>aunClick-Usuarios</div>
+            <div><i class="fa-solid fa-bars" onclick="menu()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
+        JSON.parse(localStorage.getItem('usuarios')).forEach(function(personaje) {
+            console.log("i", personaje.id);
+            document.getElementById('personas').innerHTML +=
+                `<button class="btn" style="border-radius: 15%;" onclick="generarCategorias(${personaje.id}); console.log('id', ${personaje.id});">
+                    <img src="${personaje.imagenPerfil}" id="otraFoto" style="border-radius: 15%;">
+                    <div id="rubro">
+                        ${personaje.nombre}    
+                    </div>
+                </button>`;
+           });  
+        document.getElementById('personas').innerHTML +=
+            `<button class="btn" style="border-radius: 15%;" onclick="generarCategorias()">
+                <img src="assets/img/adicion.jpg" id="otraFoto" style="border-radius: 15%; width:130px;">
+                <div id="rubro">
+                ADICIONAR  
+                </div>
+            </button>`;
+}
+
+function generarUsuariosMotoristas(a) {
+    document.getElementsByClassName('origen1')[0].id='personas'
+    document.getElementById('personas').innerHTML=null;
+    document.getElementsByClassName('origen0')[0].id='titulo2'
+    document.getElementById('titulo2').innerHTML = 
+        `<div><i class="fa-solid fa-angle-left" onclick="dashBoard(${a})"></i></div>
+        <div>aunClick-UsuariosMotor</div>
+        <div><i class="fa-solid fa-bars" onclick="menu()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`
+    JSON.parse(localStorage.getItem('usuariosMotoristas')).forEach(function(personaje) {
+        document.getElementById('personas').innerHTML +=
+            `<button class="btn" style="border-radius: 15%;" onclick="generarPedidos(${personaje.id}); console.log('id', ${personaje.id});">
+                <img src="${personaje.imagenPerfil}" id="otraFoto" style="border-radius: 15%;">
+                <div id="rubro">
+                    ${personaje.nombre}    
+                </div>
+            </button>`;
+       });  
+    document.getElementById('personas').innerHTML +=
+        `<button class="btn" style="border-radius: 15%;" onclick="generarPedidos()">
+            <img src="assets/img/adicion.jpg" id="otraFoto" style="border-radius: 15%; width:130px;">
+            <div id="rubro">
+            ADICIONAR  
+            </div>
+        </button>`;
+}
+
+function generarCategorias(a) {
+    console.log('a', a);
+    document.getElementsByClassName('origen1')[0].id='categoria'
+    document.getElementById('categoria').innerHTML=null;
+    document.getElementById('titulo2').innerHTML = 
+        `<div><i class="fa-solid fa-angle-left" onclick="dashBoard(${a})"></i></div>
+         <div>aunClick-Categorias</div>
+         <div><i class="fa-solid fa-bars" onclick="menu(${a})" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`;
+    JSON.parse(localStorage.getItem('categorias')).forEach(function(rubro){
+        document.getElementById('categoria').innerHTML +=
+           `<button class="btn col-3" id="botonSelect" onclick="generarAsociados(${a}, ${rubro.id})">
+                <img src="${rubro.icono}" style="border-radius: 15%; width:140px; height:115px;">
+                <div id="rubro">${rubro.nombre}
+                </div>
+            </button>`;
+       }); 
+    document.getElementById('categoria').innerHTML +=
+        `<button class="btn col-3" id="botonSelect" onclick="generarAsociados(${a})">
+            <img src="assets/img/adicion.jpg" style="border-radius: 15%; width:140px; height:115px;">
+            <div id="rubro">ADICIONAR
+            </div>
+        </button>`;
+}
+
+function generarAsociados(a,b) {
+    console.log('b', b);
+    document.getElementById('categoria').innerHTML=null;
+    document.getElementById('titulo2').innerHTML = 
+        `<div><i class="fa-solid fa-angle-left" onclick="generarCategorias(${a})"></i></div>
+         <div>aunClick-Asociados</div>
+         <div><i class="fa-solid fa-bars" onclick="menu(${a})" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`;
+    JSON.parse(localStorage.getItem('categorias'))[b-1].socios.forEach(function(ques){
+        
+            document.getElementById('categoria').innerHTML +=
+            `<button class="btn col-3" id="botonSelect" onclick="generarProductos(${a}, ${b}, ${ques.id})">
+                 <img src="${ques.logo}" style="border-radius: 15%; width:130px; height:130px;">
+                 <div id="rubro">${ques.socio}
+                 </div>
+             </button>`;
+       }); 
+    document.getElementById('categoria').innerHTML +=
+        `<button class="btn col-3" id="botonSelect" onclick="generarProductos(${a}, ${b}">
+                <img src="assets/img/adicion.jpg" style="border-radius: 15%; width:130px; height:130px;">
+                <div id="rubro">ADICIONAR
+                </div>
+            </button>`;
 }
 
 function ordenActiva(a,e) {
@@ -1369,19 +1647,24 @@ function eliminarProducto(a,e) {
 
 function generarProductos(a,b,c) {
     document.getElementById('categoria').innerHTML=null;
-    //document.getElementById('personas').id='categoria';
     document.getElementById('titulo2').innerHTML = 
         `<div><i class="fa-solid fa-angle-left" onclick="generarAsociados(${a},${b})"></i></div>
          <div>aunClick-Prod/Serv</div>
          <div><i class="fa-solid fa-bars" onclick="menu(${a})" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>`;
     JSON.parse(localStorage.getItem('categorias'))[b-1].socios[c-1].productos.forEach(function(pro){
             document.getElementById('categoria').innerHTML +=
-            `<button class="btn col-6" id="botonSelect" onclick="compraProducto(${a},${b},${c},${pro.id})">
+            `<button class="btn col-4" id="botonSelect" onclick="compraProducto(${a},${b},${c},${pro.id})">
                  <img src="${pro.imagen}" style="border-radius: 15%; width:130px; height:130px;">
                  <div id="rubro">${pro.nombre}
                  </div>
              </button>`;
        }); 
+    document.getElementById('categoria').innerHTML +=
+        `<button class="btn col-4" id="botonSelect" onclick="compraProducto(${a},${b},${c}">
+                <img src="assets/img/adicion.jpg" style="border-radius: 15%; width:130px; height:130px;">
+                <div id="rubro">ADICIONAR
+                </div>
+            </button>`;
 }
 
 function compraProducto(a,b,c,d) {
@@ -1401,12 +1684,9 @@ function compraProducto(a,b,c,d) {
             <br><div id="rubro" style="font-size:2rem;">L ${JSON.parse(localStorage.getItem('categorias'))[b-1].socios[c-1].productos[d-1].precio}.00</div><br>
             
             <div style="font-size:2rem; width:100%; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-evenly; align-items: center; align-content: center;" id="rubro">
-                <div onclick="cantidad(0)"><i class="fa-solid fa-circle-minus"></i></div>
-                <div id="num">${unit}</div>
-                <div onclick="cantidad(1)"><i class="fa-solid fa-circle-plus"></i></div>
                 
             </div>
-            <div id="titulo3" onclick="ordenPendiente(${a},${b-1},${c-1},${d-1}); unidadesTotales(${a})" data-bs-toggle="modal" data-bs-target="#agregado">AGREGAR A ORDEN</div>
+            <div id="titulo3" onclick="ordenPendiente(${a},${b-1},${c-1},${d-1}); unidadesTotales(${a})" data-bs-toggle="modal" data-bs-target="#agregado">EDITAR</div>
         </div>`;
 }
 
@@ -1556,7 +1836,6 @@ function editar(a) {
             </button>
             <hr>
         </div>`;
-    
 }
 
 function carrito(a) {
