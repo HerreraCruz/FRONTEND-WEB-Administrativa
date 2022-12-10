@@ -130,8 +130,8 @@ body {
 
 #categorias {
    display: grid;
-   grid-template-columns: repeat(5, 1fr);
-   grid-template-rows: repeat(5, 1fr);
+   grid-template-columns: repeat(5, 2fr);
+   grid-template-rows: repeat(5, 2fr);
    grid-column-gap: 20px;
    grid-row-gap: 20px;
 }
@@ -232,4 +232,13 @@ body {
    padding:30px; 
    border-radius: 2rem;
    text-align: center;
+}
+
+#cm {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   justify-content: flex-start;
+   align-items: center;
+   align-content: space-evenly;
 }
